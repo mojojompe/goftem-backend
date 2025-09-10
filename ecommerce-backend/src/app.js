@@ -201,11 +201,11 @@ exports.register = async (req, res) => {
   const user = await User.create({ name, email, password: hashed, otp });
   await sendEmail(email, 'Welcome to Goftem!', 'welcomeEmail.html', {
     name,
-    logoUrl: 'https://yourdomain.com/static/1.png', // <-- EDIT DOMAIN IF NEEDED
+    logoUrl: 'https://goftem-home.vercel.app/static/1.png', // <-- EDIT DOMAIN IF NEEDED
   });
   await sendEmail(email, 'Verify your email', 'otpEmail.html', {
     otp,
-    logoUrl: 'https://yourdomain.com/static/1.png',
+    logoUrl: 'https://goftem-home.vercel.app/static/1.png',
   });
   res.json({ message: 'Registered. Check your email for OTP.' });
 };
@@ -302,7 +302,7 @@ exports.checkout = async (req, res) => {
     name: req.user.name,
     orderId: order._id,
     total,
-    logoUrl: 'https://yourdomain.com/static/1.png',
+    logoUrl: 'https://goftem-home.vercel.app/static/1.png',
   });
   res.json(order);
 };
@@ -317,7 +317,7 @@ exports.confirmPayment = async (req, res) => {
   await sendEmail(order.user.email, 'Payment Confirmed!', 'paymentConfirmationEmail.html', {
     name: req.user.name,
     orderId: order._id,
-    logoUrl: 'https://yourdomain.com/static/1.png',
+    logoUrl: 'https://goftem-home.vercel.app/static/1.png',
   });
   res.json({ message: 'Payment confirmed' });
 };
@@ -341,7 +341,7 @@ exports.addProduct = async (req, res) => {
     await sendEmail(user.email, 'New Stock Added!', 'newStockEmail.html', {
       name: user.name,
       product: name,
-      logoUrl: 'https://yourdomain.com/static/1.png',
+      logoUrl: 'https://goftem-home.vercel.app/static/1.png',
     });
   }
   res.json(product);

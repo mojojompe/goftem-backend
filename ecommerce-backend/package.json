@@ -1,7 +1,7 @@
 {
-  "name": "ecommerce-backend",
+  "name": "goftem-backend",
   "version": "1.0.0",
-  "description": "Backend for an e-commerce website using Node.js, Express, and MongoDB.",
+  "description": "Backend for Goftem website using Node.js, Express, and MongoDB.",
   "main": "src/app.js",
   "scripts": {
     "start": "node src/app.js",

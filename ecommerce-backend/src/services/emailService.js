@@ -19,7 +19,7 @@ const sendWelcomeEmail = (to, name) => {
     const mailOptions = {
         from: EMAIL_USER,
         to,
-        subject: 'Welcome to Our E-commerce Platform!',
+        subject: 'Welcome to GOFTEM STORES!',
         html: fs.readFileSync(path.join(__dirname, '../templates/welcomeEmail.html'), 'utf8').replace('{{name}}', name),
     };
 
