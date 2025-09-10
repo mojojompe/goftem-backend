@@ -5,13 +5,6 @@ const errorHandler = require("./middlewares/errorHandler");
 const cors = require("cors");
 const path = require("path");
 
-require("dotenv").config();
-const express = require("express");
-const connectDB = require("./config/db");
-const errorHandler = require("./middlewares/errorHandler");
-const cors = require("cors");
-const path = require("path");
-
 const authRoutes = require("./routes/authRoutes");
 const productRoutes = require("./routes/productRoutes");
 const cartRoutes = require("./routes/cartRoutes");
