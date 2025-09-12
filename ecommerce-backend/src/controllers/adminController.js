@@ -1,3 +1,7 @@
+// Dummy createAdmin controller for demonstration
+exports.createAdmin = (req, res) => {
+  res.send("Admin created");
+};
 // Get all products
 exports.getAllProducts = async (req, res) => {
   try {
