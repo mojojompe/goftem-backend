@@ -1,4 +1,22 @@
-// Dummy createAdmin controller for demonstration
+// Import required models
+const Product = require("../models/Product");
+const User = require("../models/User");
+const Order = require("../models/Order");
+
+// Admin creation (dummy endpoint)
+exports.createAdmin = (req, res) => {
+  res.send("Admin created successfully");
+};
+
+// Get all products
+exports.getAllProducts = async (req, res) => {
+  try {
+    const products = await Product.find();
+    res.status(200).json(products);
+  } catch (error) {
+    res.status(500).json({ message: "Error fetching products", error });
+  }
+};teAdmin controller for demonstration
 exports.createAdmin = (req, res) => {
   res.send("Admin created");
 };
@@ -44,8 +62,7 @@ exports.deleteUser = async (req, res) => {
     res.status(500).json({ message: "Error deleting user", error });
   }
 };
-// src/controllers/adminController.js
-
+// Import required models
 const Product = require("../models/Product");
 const User = require("../models/User");
 const Order = require("../models/Order");
