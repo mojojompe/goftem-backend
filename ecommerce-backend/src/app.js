@@ -22,7 +22,10 @@ app.use("/api/auth", authRoutes);
 app.use("/api/products", productRoutes);
 app.use("/api/cart", cartRoutes);
 app.use("/api/orders", orderRoutes);
-app.use("/api/admin", adminRoutes);
+
+// Make sure authentication middleware runs before admin routes
+const { authMiddleware } = require("./middlewares/authMiddleware");
+app.use("/api/admin", authMiddleware, adminRoutes);
 
 app.use(errorHandler);
 
