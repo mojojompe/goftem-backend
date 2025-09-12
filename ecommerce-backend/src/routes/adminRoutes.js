@@ -1,8 +1,8 @@
-// Example admin creation route (ensure controller exists)
-const { createAdmin } = require("../controllers/adminController");
-router.post("/create", adminMiddleware, createAdmin); // Create admin (dummy)
 const express = require("express");
+const router = express.Router();
+
 const {
+  createAdmin,
   addProduct,
   updateProduct,
   deleteProduct,
@@ -15,7 +15,8 @@ const {
 } = require("../controllers/adminController");
 const { adminMiddleware } = require("../middlewares/adminMiddleware");
 
-const router = express.Router();
+// Example admin creation route (ensure controller exists)
+router.post("/create", adminMiddleware, createAdmin); // Create admin (dummy)
 
 // Admin routes for product management
 router.post("/products", adminMiddleware, addProduct); // Add a new product
