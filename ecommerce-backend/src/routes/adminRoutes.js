@@ -15,9 +15,13 @@ const {
 } = require("../controllers/adminController");
 const { adminMiddleware } = require("../middlewares/adminMiddleware");
 
-// Debugging
-console.log("createAdmin:", createAdmin);
-console.log("adminMiddleware:", adminMiddleware);
+// Debugging - check types
+console.log("createAdmin type:", typeof createAdmin);
+console.log("adminMiddleware type:", typeof adminMiddleware);
+
+// Debugging - check actual values
+console.log("createAdmin value:", createAdmin);
+console.log("adminMiddleware value:", adminMiddleware);
 
 // Admin routes for product management
 router.post("/create", adminMiddleware, createAdmin);
