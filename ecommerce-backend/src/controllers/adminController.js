@@ -16,18 +16,6 @@ exports.getAllProducts = async (req, res) => {
   } catch (error) {
     res.status(500).json({ message: "Error fetching products", error });
   }
-};teAdmin controller for demonstration
-exports.createAdmin = (req, res) => {
-  res.send("Admin created");
-};
-// Get all products
-exports.getAllProducts = async (req, res) => {
-  try {
-    const products = await Product.find();
-    res.status(200).json(products);
-  } catch (error) {
-    res.status(500).json({ message: "Error fetching products", error });
-  }
 };
 
 // Get product by ID
@@ -40,32 +28,6 @@ exports.getProductById = async (req, res) => {
     res.status(500).json({ message: "Error fetching product", error });
   }
 };
-
-// Get user by ID
-exports.getUserById = async (req, res) => {
-  try {
-    const user = await User.findById(req.params.id);
-    if (!user) return res.status(404).json({ message: "User not found" });
-    res.status(200).json(user);
-  } catch (error) {
-    res.status(500).json({ message: "Error fetching user", error });
-  }
-};
-
-// Delete user
-exports.deleteUser = async (req, res) => {
-  try {
-    const user = await User.findByIdAndDelete(req.params.id);
-    if (!user) return res.status(404).json({ message: "User not found" });
-    res.status(200).json({ message: "User deleted successfully" });
-  } catch (error) {
-    res.status(500).json({ message: "Error deleting user", error });
-  }
-};
-// Import required models
-const Product = require("../models/Product");
-const User = require("../models/User");
-const Order = require("../models/Order");
 
 // Function to add a new product
 exports.addProduct = async (req, res) => {
@@ -113,6 +75,28 @@ exports.getAllUsers = async (req, res) => {
     res.status(200).json(users);
   } catch (error) {
     res.status(500).json({ message: "Error fetching users", error });
+  }
+};
+
+// Get user by ID
+exports.getUserById = async (req, res) => {
+  try {
+    const user = await User.findById(req.params.id);
+    if (!user) return res.status(404).json({ message: "User not found" });
+    res.status(200).json(user);
+  } catch (error) {
+    res.status(500).json({ message: "Error fetching user", error });
+  }
+};
+
+// Delete user
+exports.deleteUser = async (req, res) => {
+  try {
+    const user = await User.findByIdAndDelete(req.params.id);
+    if (!user) return res.status(404).json({ message: "User not found" });
+    res.status(200).json({ message: "User deleted successfully" });
+  } catch (error) {
+    res.status(500).json({ message: "Error deleting user", error });
   }
 };
 
