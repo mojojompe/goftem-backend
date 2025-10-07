@@ -6,13 +6,13 @@ const {
   confirmPayment,
   myOrders,
 } = require("../controllers/orderController");
-const auth = require("../middlewares/authMiddleware");
-const admin = require("../middlewares/adminMiddleware");
+const { authMiddleware } = require("../middlewares/authMiddleware");
+const { adminMiddleware } = require("../middlewares/adminMiddleware");
 
 const router = express.Router();
 
 // User routes
-router.use(auth);
+router.use(authMiddleware);
 router.post("/checkout", checkout);
 router.post("/confirm-payment", confirmPayment);
 router.get("/my-orders", myOrders);

@@ -1,5 +1,10 @@
 const express = require("express");
-const { register, login, verifyOtp } = require("../controllers/authController");
+const {
+  register,
+  login,
+  verifyOtp,
+  sendOtp,
+} = require("../controllers/authController");
 const {
   registerValidator,
   loginValidator,
@@ -13,6 +18,9 @@ router.post("/register", registerValidator, validate, register);
 
 // Route for user login
 router.post("/login", loginValidator, validate, login);
+
+// Route for sending OTP
+router.post("/send-otp", sendOtp);
 
 // Route for OTP verification
 router.post("/verify-otp", validate, verifyOtp);
