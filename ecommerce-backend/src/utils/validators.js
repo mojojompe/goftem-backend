@@ -24,8 +24,20 @@ const validate = (req, res, next) => {
     next();
 };
 
+// Validators for OTP flow
+const sendOtpValidator = [
+    body('email').isEmail().withMessage('Valid email is required')
+];
+
+const verifyOtpValidator = [
+    body('email').isEmail().withMessage('Valid email is required'),
+    body('otp').isLength({ min: 4, max: 8 }).withMessage('OTP is required')
+];
+
 module.exports = {
     registerValidator,
     loginValidator,
     validate,
+    sendOtpValidator,
+    verifyOtpValidator,
 };

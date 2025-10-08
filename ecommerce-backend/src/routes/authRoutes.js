@@ -9,6 +9,8 @@ const {
   registerValidator,
   loginValidator,
   validate,
+  sendOtpValidator,
+  verifyOtpValidator,
 } = require("../utils/validators");
 
 const router = express.Router();
@@ -20,9 +22,9 @@ router.post("/register", registerValidator, validate, register);
 router.post("/login", loginValidator, validate, login);
 
 // Route for sending OTP
-router.post("/send-otp", sendOtp);
+router.post("/send-otp", sendOtpValidator, validate, sendOtp);
 
 // Route for OTP verification
-router.post("/verify-otp", validate, verifyOtp);
+router.post("/verify-otp", verifyOtpValidator, validate, verifyOtp);
 
 module.exports = router;
