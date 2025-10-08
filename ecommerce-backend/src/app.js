@@ -15,8 +15,24 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// Lightweight request logger for diagnostics
+app.use((req, _res, next) => {
+  try {
+    console.log(`[REQ] ${req.method} ${req.originalUrl}`);
+  } catch (_) {}
+  next();
+});
+
 // Serve logo statically
 app.use("/static", express.static(path.join(__dirname, "templates")));
+
+// Health endpoints for quick verification
+app.get("/api/health", (_req, res) => {
+  res.status(200).json({ status: "ok" });
+});
+app.get("/api", (_req, res) => {
+  res.status(200).json({ message: "GOFTEM API" });
+});
 
 app.use("/api/auth", authRoutes);
 app.use("/api/products", productRoutes);
